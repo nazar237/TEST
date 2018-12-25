@@ -650,17 +650,67 @@ h2{
 .contact-form textarea{
 	height: 144px;
 	font-family: Lato;
+	font-size: 18px;
+	font-weight: 400;
 }
-.contact-form input[type=checkbox]{
+.checkbox{
+	height: 50px;
+	line-height: 50px;
+	display: block;
+	position: relative;
+	cursor: pointer;
+	color: #b7b7b7;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left: 35px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.checkbox input{
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+.checkmark{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
 	width: 23px;
 	height: 23px;
 	border: 1px solid rgba(255, 255, 255, 0.5);
 	background: transparent;
 }
-.contact-form label{
-	color: #b7b7b7;
-	font-size: 16px;
-	font-weight: 400;
+.checkbox:hover input ~ .checkmark,
+.contact-form input[type=text]:hover,
+.contact-form input[type=email]:hover,
+.contact-form textarea:hover{
+	border: 1px solid rgba(255, 255, 255, 1);
+}
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+.checkbox input:checked ~ .checkmark:after {
+	display: block;
+}
+.container .checkmark:after {
+	left: 7px;
+	top: 3px;
+	width: 7px;
+	height: 12px;
+	border: solid #fff;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 .contact-form input[name=submit]{
 	width: 120px;
@@ -668,6 +718,7 @@ h2{
 	line-height: 0;
 	cursor: pointer;
 	text-align: center;
+	border: 0;
 	color: #373737;
 	background-color: #ffff00;
 	-webkit-transition: all 0.2s ease;
@@ -675,10 +726,11 @@ h2{
 }
 .contact-form input[name=submit]:hover{
 	font-weight: 700;
-	font-size: 22px;
+	background-color: #ffff0090;
+	border: 1px solid rgba(255, 255, 255, 1);
 }
 .contact-form input[name=submit]:active{
-	transform: scale(0.7);
+	transform: scaleY(0.8);
 }
 .contact-space > div{
 	padding: 6px;
